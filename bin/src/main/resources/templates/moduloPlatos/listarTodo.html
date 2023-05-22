@@ -1,0 +1,58 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../../css/EstiloListar.css" rel="stylesheet" />
+    <title>Document</title>
+</head>
+<body>
+<h1><span class="blue">&lt;</span>Table<span class="blue">&gt;</span> <span class="yellow">Responsive</span></h1>
+<h2>Created with love by <a href="https://github.com/pablorgarcia" target="_blank">ale</a></h2>
+        <div align="center">
+            <a th:href="@{/rest/platos/nuevo}">Crear Nueva Pelicula</a>
+        </div>
+        <table
+               class="container"
+               >
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Duracion</th>
+                <th>Clasificacion</th>
+                <th>Acciones</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="platos : ${listaPlatos}">
+                <td th:text="${platos.idPlato}">Id</td>
+                <td th:text="${platos.nombrePlato}">Nombre</td>
+                <td th:text="${platos.precioPlato}">Duracion</td>
+                <td th:text="${platos.tipoPlato}">Clasificacion</td>
+                <td>
+                    <a
+                        th:href="@{/rest/platos/actualizar/{id}(id=${platos.idPlato})}"><img
+                        src="../../Imagenes/ImagenActualizar.png" width="10" height="10" class="img-fluid"
+                        data-toggle="tooltip" data-placement="bottom"
+                        title="Actualizar Pelicula">ACTUALIZAR</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a
+                            th:href="@{/rest/platos/eliminar/{id}(id=${platos.idPlato})}"><img
+                            src="../../Imagenes/ImagenActualizar.png" width="10" height="10" class="img-fluid"
+                            data-toggle="tooltip" data-placement="bottom"
+                            title="Eliminar Pelicula">ELIMINAR</a>
+                </td>
+
+
+            </tr>
+            </tbody>
+        </table>
+
+</body>
+</html>
