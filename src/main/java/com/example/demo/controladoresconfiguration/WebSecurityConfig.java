@@ -21,12 +21,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
        http.authorizeRequests()
-                .antMatchers("/css/**", "/Imagenes/**", "/js/**", "/","/index", "/login","/bienvenida","/moduloPlatos/**","/rest/**","/moduloPlatos/listarTodo","/moduloPlatos/editarPlato","/moduloPlatos/NuevoPlato")
+                .antMatchers("/css/**", "/Imagenes/**", "/js/**", "/","/index", "/login","/bienvenida","/moduloPlatos/**","/rest/**","/moduloPlatos/listarTodo","/moduloPlatos/editarPlato","/moduloPlatos/NuevoPlato","/menu","/rest/menu","/menu/add")
                 .permitAll()
                 .antMatchers("/rest/platos/listarTodo").hasAnyRole("ADMIN","LECTOR","CREADOR","EDITOR","DEPURADOR")
                 .antMatchers("/rest/platos/nuevo").hasAnyRole("ADMIN","CREADOR")
                .antMatchers("/rest/platos/eliminar").hasAnyRole("ADMIN","CREADOR")
                .antMatchers("/rest/platos/guardar").hasAnyRole("ADMIN","CREADOR","EDITOR")
+               .antMatchers("/rest/menu").hasAnyRole("ADMIN","CREADOR","EDITOR")
+               .antMatchers("/restauranteWeb/menu/add").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login").defaultSuccessUrl("/bienvenida",true).permitAll()
                 .and().logout()
